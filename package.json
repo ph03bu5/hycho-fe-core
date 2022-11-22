@@ -1,0 +1,10 @@
+{
+  "name": "hec-frontend-core",
+  "version": "0.0.1",
+  "description": "Hyundai Engineering Customers' Assets Management System's dependency workspace",
+  "main": "index.js",
+  "repository": "https://gitlab.anchors-biz.com/hec/hec-frontend-core",
+  "author": "Hang Young CHO",
+  "license": "MIT",
+  "private": true
+}
