@@ -12,7 +12,7 @@
   "author": "Hang Young CHO",
   "license": "MIT",
   "publishConfig": {
-    "registry": "https://nexus.anchors-biz.com/repository/npm-repo/"
+    "registry": "http://nexus.anchors-biz.com/repository/npm-repo/"
   },
   "devDependencies": {
     "@types/react": "^18.0.25",
