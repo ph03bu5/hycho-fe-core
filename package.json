@@ -6,13 +6,13 @@
   "types": "dist/index.d.ts",
   "scripts": {
     "build": "tsc",
-    "deploy": "npm publish --registry=https://nexus.anchors-biz.com/repository/npm-group/"
+    "deploy": "npm publish"
   },
   "repository": "https://gitlab.anchors-biz.com/hec/hec-frontend-core",
   "author": "Hang Young CHO",
   "license": "MIT",
   "publishConfig": {
-    "registry": "https://nexus.anchors-biz.com/repository/npm-group/"
+    "registry": "https://nexus.anchors-biz.com/repository/npm-repo/"
   },
   "devDependencies": {
     "@types/react": "^18.0.25",
