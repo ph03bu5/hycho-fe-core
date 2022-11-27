@@ -1,11 +1,14 @@
 {
   "name": "@hec/core",
-  "version": "0.0.1",
+  "version": "0.0.3",
   "description": "Hyundai Engineering Customers' Assets Management System's dependency workspace",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "scripts": {
-    "build": "tsc",
+    "build:clean": "rm -rf ./dist",
+    "build:lib": "tsc",
+    "build:scss": "cp -r ./scss ./dist",
+    "build": "yarn build:clean && yarn build:lib && yarn build:scss",
     "deploy": "npm publish"
   },
   "repository": "https://gitlab.anchors-biz.com/hec/hec-frontend-core",

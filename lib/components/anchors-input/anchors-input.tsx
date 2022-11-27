@@ -2,7 +2,7 @@ import React, { ReactElement } from 'react';
 import { Form } from 'react-bootstrap';
 import { Controller } from 'react-hook-form';
 import { v4 as getUuid } from 'uuid';
-import './anchors-input.scoped.scss';
+import '../../../scss/anchors-input.scoped.scss';
 
 type InputType = 'text'|'number'|'date'|'password'|'email'|'radio'|'check'|'checkbox'|'select'|'selectbox'|'combobox'|'textarea';
 
