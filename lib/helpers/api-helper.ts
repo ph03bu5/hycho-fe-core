@@ -5,10 +5,15 @@ const responseHandler = (res: ApiResponse) => {
   return res.data;
 };
 
+interface ApiConfig {
+  rootPath: string;
+};
+
 export default class API {
   static _instance: API;
 
   private _axiosInstance: AxiosInstance;
+  private static _config: ApiConfig = { rootPath: '' };
 
   constructor() {
     this._axiosInstance = axios.create();
@@ -24,6 +29,10 @@ export default class API {
     );
   }
 
+  public static configure(config: ApiConfig) {
+    this._config = config;
+  }
+
   public static get instance() {
     if (!this._instance) this._instance = new API();
     return this._instance;
@@ -34,7 +43,7 @@ export default class API {
   }
 
   private static getUrl(apiPath: string) {
-    return ((import.meta as any).env.VITE_API_ROOT || '') + (apiPath.charAt(0) === '/' ? apiPath : `/${apiPath}`);
+    return this._config.rootPath + (apiPath.charAt(0) === '/' ? apiPath : `/${apiPath}`);
   }
 
   private static addGlobalConfig(config: any|undefined) {
