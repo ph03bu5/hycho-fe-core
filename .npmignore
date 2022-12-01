@@ -2,7 +2,5 @@
 .git*
 .idea
 
-node_modules/
-
 lib/
 scss/

@@ -1,6 +1,6 @@
 {
   "name": "@hec/core",
-  "version": "0.0.9",
+  "version": "0.0.11",
   "description": "Hyundai Engineering Customers' Assets Management System's dependency workspace",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -17,18 +17,12 @@
     "registry": "http://nexus.anchors-biz.com/repository/npm-repo/"
   },
   "dependencies": {
-    "@types/uuid": "^8.3.4",
-    "axios": "^1.2.0",
-    "react-hook-form": "^7.39.7",
-    "uuid": "^9.0.0"
-  },
-  "devDependencies": {
     "@types/react": "^18.0.25",
+    "axios": "^1.2.0",
     "i18next": "^22.0.6",
     "react": "^18.2.0",
-    "react-bootstrap": "^2.6.0",
+    "react-hook-form": "^7.39.7",
     "react-i18next": "^12.0.0",
-    "react-icons": "^4.6.0",
     "typescript": "^4.9.3"
   }
 }
