@@ -1,5 +1,6 @@
 import axios from 'axios';
 import { i18n } from 'i18next';
+import { useTranslation } from 'react-i18next';
 
 const SUPPORTED_LOCALES = [
   'ko-KR',
@@ -32,4 +33,16 @@ export async function changeLang(i18next: i18n, locale: string, callbackFunc?: (
   if (callbackFunc !== undefined) i18next.store.on('added', callbackFunc);
   i18next.addResourceBundle(locale, 'translation', data);
   await i18next.changeLanguage(locale);
+}
+
+export function setupLanguageDatas(i18next: i18n, data: {[locale: string]: any}) {
+  Object.keys(data).forEach(key => {
+    i18next.addResourceBundle(key, 'translation', data[key]);
+  });
+}
+
+export function useI18n(prefix: string = '') {
+  const {t, i18n, ready} = useTranslation();
+  const nt = (key: string, ...args: any[]) => t(`${!!prefix ? (prefix + '.') : ''}${key}`, ...args);
+  return { t: nt, l: nt, g: t, i18n, ready };
 }
