@@ -7,3 +7,7 @@ export interface LabelValue {
   value: string;
   label: string;
 }
+
+export interface StringMap {
+  [key: string]: any;
+}

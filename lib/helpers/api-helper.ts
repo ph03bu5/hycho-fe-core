@@ -1,7 +1,7 @@
 import axios, { AxiosInstance } from 'axios';
 
 const responseHandler = (res: ApiResponse) => {
-  if (res.statusCode !== 201 && res.statusCode !== 200) return res.errorMessage;
+  if (res.statusCode !== 201 && res.statusCode !== 200) return res.statusCode;
   return res.data;
 };
 
@@ -78,7 +78,6 @@ export default class API {
 
 export interface ApiResponse {
   statusCode: number;
-  errorMessage?: string;
   data?: any;
   stack?: string;
 }

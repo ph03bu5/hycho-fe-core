@@ -43,6 +43,6 @@ export function setupLanguageDatas(i18next: i18n, data: {[locale: string]: any})
 
 export function useI18n(prefix: string = '') {
   const {t, i18n, ready} = useTranslation();
-  const nt = (key: string, ...args: any[]) => `${t(`${!!prefix ? (prefix + '.') : ''}${key}`, ...args)}`;
+  const nt = (key: string, arg1?: any, arg2?: any) => `${t(`${!!prefix ? (prefix + '.') : ''}${key}`, arg1, arg2)}`;
   return { t: nt, l: nt, g: t, i18n, ready };
 }
