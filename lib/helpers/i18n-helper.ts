@@ -2,6 +2,23 @@ import axios from 'axios';
 import { i18n } from 'i18next';
 import { useTranslation } from 'react-i18next';
 
+const 한글자음 = ['r', 'R', 's', 'e', 'E', 'f', 'a', 'q', 'Q', 't', 'T', 'd', 'w', 'W', 'c', 'z', 'x', 'v', 'g']; // ㄱㄲㄴㄷㄸㄹㅁㅂㅃㅅㅆㅇㅈㅉㅊㅋㅌㅍㅎ
+const 한글모음 = ['k', 'o', 'i', 'O', 'j', 'p', 'u', 'P', 'h', 'hk', 'ho', 'hl', 'y', 'n', 'nj', 'np', 'nl', 'b', 'm', 'ml', 'l']; // ㅏㅐㅑㅒㅓㅔㅕㅖㅗㅘㅙㅚㅛㅜㅝㅞㅟㅠㅡㅢㅣ
+const 한글받침 = ['', 'r', 'R', 'rt', 's', 'sw', 'sg', 'e', 'f', 'fr', 'fa', 'fq', 'ft', 'fx', 'fv', 'fg', 'a', 'q', 'qt', 't', 'T', 'd', 'w', 'c', 'z', 'x', 'v', 'g']; // 아악앆앇안앉않앋알앍앎앏앐앑앒앓암압앖앗았앙앚앛앜앝앞앟
+
+const koreanCharToKey: {[ch: string]: string} = {};
+let num = 44032;
+
+한글자음.forEach(j => {
+  한글모음.forEach(m => {
+    한글받침.forEach(b => {
+      const ch = String.fromCharCode(num++);
+      const key = `${j}${m}${b}`;
+      koreanCharToKey[ch] = key;
+    });
+  });
+});
+
 const SUPPORTED_LOCALES = [
   'ko-KR',
   'en-US',
@@ -33,6 +50,18 @@ export async function changeLang(i18next: i18n, locale: string, callbackFunc?: (
   if (callbackFunc !== undefined) i18next.store.on('added', callbackFunc);
   i18next.addResourceBundle(locale, 'translation', data);
   await i18next.changeLanguage(locale);
+}
+
+const convertToKeyInput =
+  (keyword: string) =>
+    (keyword || '')
+      .split('')
+      .reduce((prv, cur, idx) => (prv + (koreanCharToKey[cur] ?? cur)), '');
+
+export function isStartingWith(source: string, keyword: string) {
+  const src = convertToKeyInput(source);
+  const key = convertToKeyInput(keyword);
+  console.log(src, key);
 }
 
 export function setupLanguageDatas(i18next: i18n, data: {[locale: string]: any}) {
