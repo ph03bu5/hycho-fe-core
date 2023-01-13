@@ -76,10 +76,24 @@ export function setupLanguageDatas(i18next: i18n, data: {[locale: string]: any})
   });
 }
 
+/* 0~9, A~Z, a~z 의 은(false) / 는(true) 구분 맵 */
+const NUM_CONSONANT_MAP = [false, false, true, false, true, true, false, false, false, true];
+const ALPHA_CONSONANT_MAP = 'lmnrLMNR'; // 조사 '은'을 사용하는 알파벳
+
 export function isKoreanEndWithConsonant(word: string) {
-  const finalChrCode = word.charCodeAt(word.length - 1);
-  const finalConsonantCode = (finalChrCode - 44032) % 28;
-  return finalConsonantCode !== 0;
+  const finalChr = word.charAt(word.length - 1);
+  if (finalChr >= '가' && finalChr <= '힣') {
+    const finalChrCode = word.charCodeAt(word.length - 1);
+    return (finalChrCode - 44032) % 28 !== 0;
+  } else if (finalChr >= 'ㄱ' && finalChr <= 'ㅎ') {
+    return false;
+  } else if (finalChr >= 'A' && finalChr <= 'z') {
+    return !ALPHA_CONSONANT_MAP.includes(finalChr);
+  } else if (finalChr >= '0' && finalChr <= '9') {
+    return NUM_CONSONANT_MAP[parseInt(finalChr)];
+  } else {
+    return true;
+  }
 }
 
 export function useI18n(prefix: string = '') {
