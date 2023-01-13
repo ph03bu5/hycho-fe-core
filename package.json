@@ -1,6 +1,6 @@
 {
   "name": "@hec/core",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Hyundai Engineering Customers' Assets Management System's dependency workspace",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",

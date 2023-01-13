@@ -19,6 +19,12 @@ let num = 44032;
   });
 });
 
+const 한글조사 = {
+  '을': ['을', '를'],
+  '은': ['은', '는'],
+  '이': ['이', '가'],
+};
+
 const SUPPORTED_LOCALES = [
   'ko-KR',
   'en-US',
@@ -27,7 +33,7 @@ const SUPPORTED_LOCALES = [
 export function detachLocaleString(locale: string) {
   const loc = SUPPORTED_LOCALES.indexOf(locale || '') >= 0 ? locale : 'ko-KR'
   const s = loc.split('-');
-  return {country: s[1], language: s[0]};
+  return { country: s[1], language: s[0] };
 }
 
 export function attachLocaleString(country: string, language: string) {
@@ -70,8 +76,14 @@ export function setupLanguageDatas(i18next: i18n, data: {[locale: string]: any})
   });
 }
 
+export function isKoreanEndWithConsonant(word: string) {
+  const finalChrCode = word.charCodeAt(word.length - 1);
+  const finalConsonantCode = (finalChrCode - 44032) % 28;
+  return finalConsonantCode !== 0;
+}
+
 export function useI18n(prefix: string = '') {
-  const {t, i18n, ready} = useTranslation();
+  const { t, i18n, ready } = useTranslation();
   const nt = (key: string, arg1?: any, arg2?: any) => `${t(`${!!prefix ? (prefix + '.') : ''}${key}`, arg1, arg2)}`;
   return { t: nt, l: nt, g: t, i18n, ready };
 }
