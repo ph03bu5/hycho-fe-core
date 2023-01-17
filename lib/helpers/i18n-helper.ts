@@ -88,7 +88,7 @@ export function isKoreanEndWithConsonant(word: string) {
   } else if (finalChr >= 'ㄱ' && finalChr <= 'ㅎ') {
     return false;
   } else if (finalChr >= 'A' && finalChr <= 'z') {
-    return !ALPHA_CONSONANT_MAP.includes(finalChr);
+    return ALPHA_CONSONANT_MAP.includes(finalChr);
   } else if (finalChr >= '0' && finalChr <= '9') {
     return NUM_CONSONANT_MAP[parseInt(finalChr)];
   } else {
