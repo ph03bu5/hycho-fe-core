@@ -107,7 +107,7 @@ export function useI18n(prefix: string = '') {
   const at = (lang: string, key: string, arg1?: any, arg2?: any) => `${i18n.getFixedT(lang, 'translation')(`${pref}${key}`, arg1, arg2)}`;
 
   // o : 레이블 오브젝트에서 현재 언어의 필드값
-  const ot = (obj: any) => obj[i18n.resolvedLanguage];
+  const ot = (obj: any) => !!obj ? obj[i18n.resolvedLanguage] : undefined;
 
   // g : 기존 t 함수
   return { t: nt, l: at, o: ot, g: t, i18n, ready };
