@@ -98,6 +98,17 @@ export function isKoreanEndWithConsonant(word: string) {
 
 export function useI18n(prefix: string = '') {
   const { t, i18n, ready } = useTranslation();
-  const nt = (key: string, arg1?: any, arg2?: any) => `${t(`${!!prefix ? (prefix + '.') : ''}${key}`, arg1, arg2)}`;
-  return { t: nt, l: nt, g: t, i18n, ready };
+  const pref = !!prefix ? `${prefix}.` : '';
+
+  // t : prefix 앞에 붙여주는 t 함수
+  const nt = (key: string, arg1?: any, arg2?: any) => `${t(`${pref}${key}`, arg1, arg2)}`;
+
+  // l : 언어 지정 t 함수
+  const at = (lang: string, key: string, arg1?: any, arg2?: any) => `${i18n.getFixedT(lang, 'translation')(`${pref}${key}`, arg1, arg2)}`;
+
+  // o : 레이블 오브젝트에서 현재 언어의 필드값
+  const ot = (obj: any) => obj[i18n.resolvedLanguage];
+
+  // g : 기존 t 함수
+  return { t: nt, l: at, o: ot, g: t, i18n, ready };
 }
