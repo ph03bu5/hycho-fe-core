@@ -112,3 +112,12 @@ export function useI18n(prefix: string = '') {
   // g : 기존 t 함수
   return { t: nt, l: at, o: ot, g: t, i18n, ready };
 }
+
+export const getPostposition = (str: string) => {
+  const conso = isKoreanEndWithConsonant(str);
+  return {
+    은: conso ? '은' : '는',
+    을: conso ? '을' : '를',
+    이: conso ? '이' : '가',
+  };
+};
