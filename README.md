@@ -1,8 +1,8 @@
-# @hec/core
+# @ph03bu5/core
 
 
 
-현대 엔지니어링 대고객 자산 관리 프로젝트 프론트엔드 모바일 애플리케이션, 웹 애플리케이션 개발을 지원하기 위한 공통 모듈
+프론트엔드 모바일 애플리케이션, 웹 애플리케이션 개발을 지원하기 위한 공통 모듈
 
 
 
@@ -10,9 +10,9 @@
 
 #### 	React 컴포넌트
 
-- **AnchorsWebInput** - 라디오버튼/체크박스, 콤보박스, 텍스트 등 사용자 입력을 받는 React Web 컴포넌트
+- **WebInput** - 라디오버튼/체크박스, 콤보박스, 텍스트 등 사용자 입력을 받는 React Web 컴포넌트
   (react-bootstrap, react-hook-form 기반)
-- **AnchorsWebDataTable** - 테이블 표출을 위한 컴포넌트, 컬럼 설정 및 행 체크 기능 등 지원
+- **WebDataTable** - 테이블 표출을 위한 컴포넌트, 컬럼 설정 및 행 체크 기능 등 지원
 
 #### 	공통 클래스/헬퍼
 
@@ -72,7 +72,7 @@ export function HelloInput() {
 
       
 
-   2. ##### AnchorsWebInput
+   2. ##### WebInput
 
       | property   | type                                       | description |
       | ---------- | ------------------------------------------ | ----------- |
@@ -93,8 +93,4 @@ export function HelloInput() {
 
       
 
-   3. AnchorsWebDataTable
-
-      1. 
-
-   4. API
+   3. 이하 차후 작성
